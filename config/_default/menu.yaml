@@ -1,0 +1,65 @@
+main:
+  - name: 首页
+    identifier: home
+    url: /
+    weight: 100
+  - name: 基金会
+    identifier: foundation
+    url: /foundation
+    weight: 200
+  - name: 公益活动
+    identifier: activity
+    url: /activity
+    weight: 300
+  - name: 技术
+    identifier: tech
+    url: /tech
+    weight: 400
+  # 首页二级
+  - name: 愿景与使命
+    url: /#vision-mission
+    parent: home
+  - name: 顾问委员会
+    url: /#committee
+    parent: home
+  - name: ABlockChain技术特点
+    url: /#technology
+    parent: home
+  # AB基金会二级
+  - name: AB基金会
+    url: /foundation#found-desc
+    parent: foundation
+  - name: 愿景与使命
+    url: /foundation#vision-mission
+    parent: foundation
+  - name: 基金会核心职能
+    url: /foundation#core-function
+    parent: foundation
+  - name: 顾问委员会
+    url: /foundation#committee
+    parent: foundation
+  - name: 基金分配原则
+    url: /foundation#distribution
+    parent: foundation
+  - name: 慈善基⾦会运作模式
+    url: /foundation#operation-pattern
+    parent: foundation
+  - name: 基金会治理结构
+    url: /foundation#manage-struct
+    parent: foundation
+  # 技术二级
+  - name: ABlockChain公链愿景
+    url: /tech#chain-vision
+    parent: tech
+  - name: ABlockChain技术特点
+    url: /tech#technology
+    parent: tech
+  - name: Newton
+    url: /tech#newton
+    parent: tech
+  - name: 公益与技术结合
+    url: /tech#public-chain
+    parent: tech
+  - name: 当前进展
+    url: /tech#current-progress
+    parent: tech

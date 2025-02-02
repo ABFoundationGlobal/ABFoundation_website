@@ -1,0 +1,115 @@
+<header>
+    <a href="{{ site.BaseURL | relLangURL }}">
+      {{ site.Title }}
+    </a>
+    {{ $currentPage := . }}
+    {{with site.Menus.main }}
+      <nav>
+        <span id="hamburger" class="hamburger"></span>
+        <span id="menu-close" class="menu-close"></span>
+        <ul>
+          {{range .}}
+            <li>
+              <a href="{{ .URL }}">{{.Name | humanize}} <span></span></a>
+              <!-- {{ printf "%#v" .Identifier }} -->
+              {{ if or .HasChildren (eq .Identifier "home") }}
+                {{ if eq .Identifier "home" }}
+                  <ul id="sub-menu-home" class="sub-menu" role="menu">
+                    <li class="">
+                        <a href="/#vision-mission">愿景与使命</a>
+                    </li>
+                    <li class="">
+                        <a href="/#committee">顾问委员会</a>
+                    </li>
+                    <li class="">
+                        <a href="/#technology">ABlockChain技术特点</a>
+                    </li>
+                  </ul>
+                {{ else }}
+                <ul id="sub-menu-{{ .Identifier }}" class="sub-menu two-col" role="menu">
+                    {{ range .Children }}
+                    <li class="">
+                        <a href="{{ .URL }}">{{ .Name }}</a>
+                    </li>
+                    {{ end }}
+                </ul>
+              {{ end }}
+            {{ end }}
+            </li>
+          {{end}}
+        </ul>
+      </nav>
+    {{end}}
+</header>
+<div id="modal">
+  {{with site.Menus.main }}
+    <ul>
+      {{range .}}
+        <li>
+          <a href="{{ .URL }}">{{.Name | humanize}} </a>
+          <div class="to-sub-menu" data-menuname="{{ .Identifier }}"><span></span></div>
+        </li>
+      {{end}}
+      <li>
+        <a href=""> 简体中文 </a>
+        <div class="to-sub-menu"><span></span></div>
+      </li>
+    </ul>
+  {{end}}
+</div>
+<div id="sub-modal">
+  <div>
+    <span id="go-back">
+        <img src="/image/icon/back.png">返回
+    </span>
+    <span><img src="/image/icon/arrow.png"></span>
+  </div>
+  <ul id="sub-menu-box">
+
+  </ul>
+</div>
+<div id="lang-web">
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#hamburger').click(function() {
+    $('#hamburger').hide()
+    $('#menu-close').show()
+    $('#modal').slideDown()
+    $('body').addClass('modal-open')
+  })
+  $('#menu-close').click(function() {
+    $('#hamburger').show()
+    $('#menu-close').hide()
+    $('#modal').hide()
+    $('#sub-modal').hide()
+    $('body').removeClass('modal-open')
+  })
+  $('#modal a').click(function() {
+    $('#hamburger').show()
+    $('#menu-close').hide()
+    $('#modal').hide()
+    $('body').removeClass('modal-open')
+  })
+  $('.to-sub-menu').click(function() {
+    let menu_name = $(this).data('menuname')
+    let selector = $('#sub-menu-' + menu_name)
+    $('#sub-menu-box').html(selector.html())
+    $('#sub-modal').show().animate({
+      'left': 0
+    }, 'slow') 
+  })
+  $('#sub-menu-box').on('click', 'a', function(){
+    $('#modal').hide()
+    $('#sub-modal').hide()
+    $('body').removeClass('modal-open')
+  })
+  $('#go-back').click(function() {
+    $('#sub-modal').hide().animate({
+      'right': 0
+    }, 'slow')
+    $('#sub-menu-box').empty()
+  })
+})
+</script>

@@ -1,0 +1,65 @@
+<footer class="dark column">
+    <div class="row">
+      <div class="footer-title">
+        <p>{{ site.Title }}</p>
+      </div>
+      <div class="footer-content">
+        <div class="footer-cont-main row">
+          <div class="footer-main column">
+            <p class="footer-desc">我们是一家非营利组织，致力于抗击世界各地的贫困、疾病和不平等。</p>
+            <div class="nav-link-box">
+              <p class="nav-link">
+                <a href="#">首页</a>
+                <span>-</span>
+                <a href="#">基金会</a>
+                <span>-</span>
+                <a href="#">公益活动</a>
+              </p>
+              <p class="nav-link">
+                <a href="#">技术</a>
+                <span>-</span>
+                <a href="#">开发者</a>
+                <span>-</span>
+                <a href="#">生态</a>
+              </p>
+            </div>
+          </div>
+          <div class="footer-main icon-box row">
+            <img src="/image/icon/group.png">
+            <img src="/image/icon/facebook.png">
+            <img src="/image/icon/ins.png">
+            <img src="/image/icon/photo.png">
+            <img src="/image/icon/youtobe.png">
+            <img src="/image/icon/slice6.png">
+          </div>
+        </div>
+        <div class="footer-link">          
+          <p>
+            <a href="#">接触</a>
+            <span>-</span>
+            <a href="#">媒体中心</a>
+            <span>-</span>
+            <a href="#">职业</a>
+            <span>-</span>
+            <a href="#">探索中心</a>
+            <span>-</span>
+            <a href="#">与我们一起奉献</a>
+            <span>-</span>
+            <a href="#">守门员</a>
+          </p>
+          <p class="grey">
+            <a href="#">举报诈骗</a>
+            <span>|</span>
+            <a href="#">道德报告</a>
+            <span>|</span>
+            <a href="#">隐私和Cookies 声明</a>
+            <span>|</span>
+            <a href="#">使用条款</a>
+            <span>|</span>
+            <a href="#">品牌指南</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="grey">{{.Param "copyright" | markdownify}}</div>
+</footer>
