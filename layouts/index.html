@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ .Site.Language.Lang }}">
   <head>
     <meta charset="UTF-8">
     {{with .Description}}<meta name="description" content="{{.}}">{{end}}
@@ -12,8 +12,8 @@
   <body class="home">
     {{- partial "header.html" . -}}
     <section id="intro">
-      {{with .Param "content"}}<h1>{{.}}</h1>{{end}}
-      {{with .Param "subcontent"}}<h1>{{.}}</h1>{{end}}
+      <h1>AB基金会致力于</h1>
+      <h1>成为区块链技术创新和社会公益的桥梁</h1>
     </section>
     {{- partial "vision.html" . -}}
     {{- partial "committee.html" . -}}

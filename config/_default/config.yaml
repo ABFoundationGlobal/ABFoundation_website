@@ -1,5 +1,17 @@
-baseURL: https://chapter-05-15.hugoinaction.com
-languageCode: en-us
+baseURL: https://abfoundation.com
+languageCode: zh-cn
 title: AB基金会
 enableEmoji: true
 enableGitInfo: true
+defaultContentLanguage: zh-cn
+languages:
+  zh-CN:
+    languageCode: zh-cn
+    languageName: 简体中文
+    contentDir: content
+    weight: 1
+  en:
+    languageCode: en
+    languageName: English
+    contentDir: content
+    weight: 2

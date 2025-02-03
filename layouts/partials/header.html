@@ -1,8 +1,9 @@
 <header>
     <a href="{{ site.BaseURL | relLangURL }}">
-      {{ site.Title }}
+      {{ i18n "SiteTitle" }}
     </a>
     {{ $currentPage := . }}
+    {{ $currentUrl := .RelPermalink }}
     {{with site.Menus.main }}
       <nav>
         <span id="hamburger" class="hamburger"></span>
@@ -16,20 +17,20 @@
                 {{ if eq .Identifier "home" }}
                   <ul id="sub-menu-home" class="sub-menu" role="menu">
                     <li class="">
-                        <a href="/#vision-mission">愿景与使命</a>
+                        <a href={{ replace "/#vision-mission" $currentUrl "" }}>愿景与使命</a>
                     </li>
                     <li class="">
-                        <a href="/#committee">顾问委员会</a>
+                        <a href={{ replace "/#committee" $currentUrl "" }}>顾问委员会</a>
                     </li>
                     <li class="">
-                        <a href="/#technology">ABlockChain技术特点</a>
+                        <a href={{ replace "/#technology" $currentUrl "" }}>ABlockChain技术特点</a>
                     </li>
                   </ul>
                 {{ else }}
                 <ul id="sub-menu-{{ .Identifier }}" class="sub-menu two-col" role="menu">
                     {{ range .Children }}
                     <li class="">
-                        <a href="{{ .URL }}">{{ .Name }}</a>
+                        <a href="{{ replace .URL $currentUrl "" }}">{{ .Name }}</a>
                     </li>
                     {{ end }}
                 </ul>
@@ -39,6 +40,7 @@
           {{end}}
         </ul>
       </nav>
+      <span id="lang-img" class="lang-img"></span>
     {{end}}
 </header>
 <div id="modal">
@@ -52,7 +54,7 @@
       {{end}}
       <li>
         <a href=""> 简体中文 </a>
-        <div class="to-sub-menu"><span></span></div>
+        <div class="to-sub-menu" data-menuname="lang"><span></span></div>
       </li>
     </ul>
   {{end}}
@@ -68,8 +70,18 @@
 
   </ul>
 </div>
-<div id="lang-web">
+<div id="lang-box">
+  <div>
+    <span>语言</span>
+    <img src="/image/icon/close.png">
+  </div>
+  <ul id="sub-menu-lang">
+    {{ range .Site.Languages }}
+      <li><a href="{{site.BaseURL}}{{ .Lang | urlize }}" {{ if not (eq .Lang "zh-cn") }} class="disabled" {{end}}>{{ .LanguageName }}</a></li>
+    {{ end }}
+  </ul>
 </div>
+<div id="modal-web"></div>
 
 <script type="text/javascript">
 $(document).ready(function(){
@@ -104,12 +116,29 @@ $(document).ready(function(){
     $('#modal').hide()
     $('#sub-modal').hide()
     $('body').removeClass('modal-open')
+    $('#menu-close').hide()
+    $('#hamburger').show()
   })
   $('#go-back').click(function() {
     $('#sub-modal').hide().animate({
       'right': 0
     }, 'slow')
     $('#sub-menu-box').empty()
+  })
+  $('#lang-img').click(function(){
+    $('#modal-web').show();
+    $('#lang-box').fadeIn()
+    $('body').addClass('modal-open')
+  })
+  $('#lang-box img').click(function(){
+    $('#modal-web').hide();
+    $('#lang-box').fadeOut()
+    $('body').removeClass('modal-open')
+  })
+  $('#modal-web').click(function(){
+    $('#modal-web').hide();
+    $('#lang-box').fadeOut()
+    $('body').removeClass('modal-open')
   })
 })
 </script>

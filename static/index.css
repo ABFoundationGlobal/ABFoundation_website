@@ -1524,7 +1524,7 @@ footer .footer-content {
   transform: translateX(0) translateY(0) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
 }
 
-#modal, #sub-modal, #lang-web {
+#modal, #sub-modal, #lang-box {
   display: none;
 }
 body.modal-open {
@@ -1610,4 +1610,67 @@ header .menu-close {
   padding: 1rem 1rem;
   display: flex;
   justify-content: space-between;
+}
+#lang-box a.disabled,
+#sub-modal a.disabled {
+  pointer-events: none;
+  color: gray;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.lang-img {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAAb1BMVEUAAAAtSF8sRl4sRl43SmstRl4tRl8tR14tRl4uSGAxSWEySGQsR18tSWAsRl4wSWEsR18tR14tR14uR2AtSGAsRl8uSF8uUWg9VWwtRl8tRl8zVWYsRl4sRl4sRl8sR14tR18sR18tR2EtSGIsRl6Bt76oAAAAJHRSTlMAVPR+DdPp26xEJBu/LvcquaWCdXJhWRYK4fAPvcunnZdnTzkH5ztxAAABYklEQVQ4y41V25aDIAwEtKUV0Wqt9975/2/cAeNRu7unyQshGQmThCi2klRFqpXSaVEl4l9pyp1bya5s/oTFkXIfoqL4N07uJx9hSNnLT1wU7Ad5noFneQhrtIG1wXiywmTOjXk+OpcZYU/h43YF9DhVQ7mDAxwtWN2xrZVHbuNq6wnBcfSWI44csFq9ji79rY3XnjhwsuHIp19NBycxisG3t0G9gsRkBKlrUGyPU2IK/EUoeKO+A5WvUekYUk7XTuUkuPhNktyc60hNA8UE+Jrog9VFkFzAgdQakERUyFhM9B1lkTLpZjvKVYkCpSNfHr4k8ZFy0lHKQuACD9q/4TMz0GDzJv0BGkJTlijaMAMHugdlWgu1EHjBtzQANq+FmBI9D9izQ7PJsNPDTji7hJymGNEU7DZjNy7/KfAfFz3XjvFcaQDkUIZsGQAqXgYAc6TwhxR/7PEHKX8084c9+/fxAzmzYdZlZTUDAAAAAElFTkSuQmCC);
+  background-size: cover;
+  cursor: pointer;
+  display: inline-block;
+  height: 1.25rem;
+  width: 1.25rem;
+  position: absolute;
+  right: 6.15%;
+  @media (max-width:768px) {
+    display: none;
+  }
+}
+#lang-box {
+  background-color: #fff;
+  border-radius: 10px;
+  flex-direction: column;
+  position: absolute;
+  top: 10rem;
+  width: 50rem;
+  margin: 0 auto;
+  z-index: 99;
+  div {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 2rem 1.2rem;
+    border-bottom: 1.5px solid #D5D5D5;
+    img {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+  ul {
+    padding: 1.375rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-height: 12rem;
+    li {
+      width: 11.8rem;
+      padding: 1.375rem;
+    }
+  }
+}
+#modal-web {
+  display: none;
+  background-color: #000000;
+  opacity: 0.2;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 90;
+
 }
